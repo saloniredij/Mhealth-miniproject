@@ -1,0 +1,73 @@
+.login{
+    border-style: solid;
+    border-width: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    height: 400px;
+    width: 350px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 15%;
+    margin-left: 45%;
+    position: relative;
+    bottom: 100px;
+    right: 50px;
+    padding-bottom: 50px;
+    padding-top: 10px;
+}
+
+.register{
+    border-style: solid;
+    border-width: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    height: 680px;
+    width: 550px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 12%;
+    
+    position: relative;
+    bottom: 150px;
+    left: 50px;
+}
+
+.label1{
+    text-align: left;
+    margin-top: 40px;
+    padding-right: 20px;
+}
+
+.label2{
+    text-align: left;
+    margin-top: 50px;
+    margin-right: 40px;
+    padding-bottom: 0px;
+    
+}
+
+#account{
+    position: static;
+}
+
+body{
+    background-image: url('images/login.jpg');
+    background-position: right;
+    background-size: initial;
+    
+}
+
+div{
+    font: 20px bold ,"Times New Roman", Times, serif;
+    
+    
+    
+}
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(sansation_light.woff);
+  }
+
+
+

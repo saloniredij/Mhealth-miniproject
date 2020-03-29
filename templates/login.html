@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'account.css' %}">
+</head>
+<body class="font">
+    <div class="login">
+        <h2>Login</h2>
+
+        <form action="{% url 'login' %}" method=post>
+            {% csrf_token %}
+    <pre class="label2">
+    Username:<input type="text" name="username" placeholder="username"><br><br>
+    Password:<input type="password" name="password" placeholder="password"><br><br>
+    </pre>
+            <input type="Submit">
+        
+        </form>
+
+        <div id="account">
+            <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+        </div>
+    
+
+        <div onclick="alertBox()">
+            {%for message in messages %}
+            {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+
+<script src="{% static accounts.js%}"></script>
+</body>
+</html>

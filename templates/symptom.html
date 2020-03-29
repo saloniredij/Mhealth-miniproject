@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'symptoms.css' %}">
+</head>
+<body>
+    <div class="navBar"> 
+        <ul>
+            {% if user.is_authenticated %}
+            <li id="name">Hello {{user.first_name}}.</li>
+            {% endif %}
+            <li><a href="{%url 'index'%}">Home</a></li>
+            <li><a href="{%url 'bmi'%}">BMI</a></li>
+            <li><a href="{%url 'symptom'%}">Disease</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{%url 'logout'%}">Logout</a></li>
+
+            {% else %}           
+            <li><a href="{%url 'login'%}">Login</a></li>
+            <li><a href="{%url 'register'%}">Register</a></li>
+            
+            {% endif %}
+        </ul>
+
+    </div>
+
+
+    <div>
+        {% if user.is_authenticated %}
+        <div class="predict">
+        <h2>Health Predictor</h2>
+        <p id="p">Know your health in just 3 steps</p><br>
+        <form action="{% url 'symptom' %}" method=post>
+            {%csrf_token%}
+            
+            <label for="cough">1: </label>
+            <select name="cough" id="symptoms">            
+                <option name="candc">Cough&Cold</option>
+                <option name="drysore">Cough & Sore Throat</option>
+                <option name="sore">Sore Throat</option>
+                <option name="sputum">Cough & sputum</option>
+                <option name="not">None of the above</option>
+            </select><br><br>
+            <label for="fever">2: </label>
+            <select name="fever" id="symptoms">
+                <option name="normalfever">Feverish</option>
+                <option name="highfever">High Fever</option>
+                <option name="pattern">Intermittent Fever(pattern fever)</option>
+                <option name="not">None of the above</option>
+                
+            </select><br><br>
+            <label for="common">3: </label>
+            <select name="common" id="symptoms">
+                
+                <option name="yellow">Pale Yellow Skin</option>
+                <option name="diarreheoa">Diarreheoa</option>
+                <option name="all">All of the above</option>
+                <option name="not">None of the above</option>
+            </select><br><br>
+            
+            <input type="submit" value="Submit">
+        </form>
+
+        
+        </div>
+    </div>
+    <div id="message">
+        {% for message in messages %}
+        <h3>{{message}}</h3>
+        {%endfor%}
+    </div>
+
+    {% else %}
+    <div class="login">
+        <p>Uh-oh! Please <a href="{% url 'login' %}" id="login">login</a> to start the predictor.</p>
+    </div>
+    {% endif %}
+
+   
+
+
+
+
+   <script src="{% static 'symptom.js' %}"></script>
+</body>
+</html>

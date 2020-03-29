@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'account.css' %}">
+</head>
+<body class="font">
+    <div class="register">
+        <h2>Registration Form</h2>
+        
+        <form action='{% url "register" %}' method=post>
+            {% csrf_token %}
+
+            <pre class="label1">
+            First Name:      <input type="text" name="first_name"  placeholder="First name"><br><br>
+            Last Name:       <input type="text" name="last_name" placeholder="Last name"><br><br>
+            Username:        <input type="text" name="username" placeholder="Username"><br><br>
+            Email ID:        <input type="emailt" name="email" placeholder="Email"><br><br>
+            Password:        <input type="password" name="password1" placeholder="Password"><br><br>
+            Re-type Password:<input type="password" name="password2" placeholder="Confirm password" id="submit"><br><br>
+            
+            </pre>
+            <input type="Submit">
+        </form>
+
+        <div id="account">
+            <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+        </div>
+
+        <div onclick="alertBox()">
+            {%for message in messages %}
+            {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+
+    <script src="{% static accounts.js%}"></script>
+    
+</body>
+</html>
